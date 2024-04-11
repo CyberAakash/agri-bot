@@ -33,7 +33,7 @@ class ApiService {
   static Future<List<ChatModel>> sendMessageGPT(
       {required String message, required String modelId}) async {
     try {
-      log("modelId davinci-002");
+      log("modelId gpt-3.5-turbo");
       var response = await http.post(
         Uri.parse("$BASE_URL/chat/completions"),
         headers: {
@@ -42,7 +42,7 @@ class ApiService {
         },
         body: jsonEncode(
           {
-            "model": "davinci-002",
+            "model": "gpt-3.5-turbo",
             "messages": [
               {
                 "role": "user",
@@ -76,7 +76,7 @@ class ApiService {
   static Future<List<ChatModel>> sendMessage(
       {required String message, required String modelId}) async {
     try {
-      log("modelId davinci-002");
+      log("modelId gpt-3.5-turbo");
       var response = await http.post(
         Uri.parse("$BASE_URL/completions"),
         headers: {
@@ -85,7 +85,7 @@ class ApiService {
         },
         body: jsonEncode(
           {
-            "model": "davinci-002",
+            "model": "gpt-3.5-turbo-instruct",
             "prompt":
                 "You are not an AI model, You are an agricultural bot, tell you are an agricultural bot when ever I ask about you, refer to yourself as agribot, please donot answer any questions I ask which is not related to agriculture. Please answer only if asked, dont tell about yourself if not asked. Please answer this question : $message. Please dont answer if my question is not related to agriculture. ",
             "max_tokens": 500,
